@@ -11,6 +11,7 @@ public class CocoScript : MonoBehaviour
 
     public float speed;
     public float vSpeed;
+
     public Rigidbody2D body;
 
     private Collider2D _collider2D;
@@ -30,24 +31,19 @@ public class CocoScript : MonoBehaviour
             new Vector2(GroundMargin, -GroundMargin), 0);
         bool isGrounded = collider2Ds.Length == 2;
 
-        if (!isGrounded)
-        {
-            return;
-        }
-
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        //gameObject.transform.position = new Vector2(transform.position.x + h * speed, transform.position.y + v * speed);
-        //float vitesseActuelle = body.velocity.y;
-        //float nouvelleVitesse = vitesseActuelle + v * vSpeed;
+        Debug.Log($"h={h} - v={v}");
 
-        var hSpeed = h * speed;
-        float vSpeed_ = body.velocity.y;
-        if (v > 0)
+        var hSpeed_ = h * speed;
+        var vSpeed_ = body.velocity.y;
+
+        if (isGrounded && v > 0)
         {
-            vSpeed_ = vSpeed;
+            vSpeed_ = v * vSpeed;
         }
-        body.velocity = new Vector2(hSpeed, vSpeed_);
+        
+        body.velocity = new Vector2(hSpeed_, vSpeed_);
     }
 }
