@@ -618,8 +618,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9af645f06d07dd4aa277efbc47dc12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  vSpeed: 6
+  speed: 4.1
+  vSpeed: 5.2
   body: {fileID: 269676208}
   eventManager: {fileID: 1601101131}
 --- !u!50 &269676208
