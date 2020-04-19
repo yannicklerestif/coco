@@ -13,7 +13,7 @@ public class CocoScript : MonoBehaviour
     public float vSpeed;
 
     public Rigidbody2D body;
-
+    public EventManager eventManager;
     private Collider2D _collider2D;
 
     // Start is called before the first frame update
@@ -34,8 +34,6 @@ public class CocoScript : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        Debug.Log($"h={h} - v={v}");
-
         var hSpeed_ = h * speed;
         var vSpeed_ = body.velocity.y;
 
@@ -45,5 +43,13 @@ public class CocoScript : MonoBehaviour
         }
         
         body.velocity = new Vector2(hSpeed_, vSpeed_);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "mort lave")
+        {
+            eventManager.OnPlayerDied();
+        }
     }
 }
