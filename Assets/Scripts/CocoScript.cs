@@ -6,14 +6,12 @@ using UnityEngine;
 public class CocoScript : MonoBehaviour
 {
     private static readonly float GroundMargin = 0.01f;
-    public static float DummyX = 0.0f;
-    public static float DummyY = 0.0f;
 
     public float speed;
     public float vSpeed;
-
     public Rigidbody2D body;
     public EventManager eventManager;
+
     private Collider2D _collider2D;
 
     // Start is called before the first frame update
@@ -47,7 +45,7 @@ public class CocoScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "mort lave")
+        if (collision.gameObject.tag == "mort lave" || collision.gameObject.tag == "Monstre")
         {
             eventManager.OnPlayerDied();
         }
